@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  <title>Eco Quest — Start</title>
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800;900&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Round">
+
+  <style>
+    :root{
+      --primary:#13ec6d;
+      --bg:#f6f8f7;
+      --card:#ffffff;
+      --border:#e2e8e4;
+      --shadow:#d1d9d4;
+      --ink:#0f172a;
+      --muted:#64748b;
+      --r-xl:26px;
+      --r-lg:20px;
+      --r-md:16px;
+    }
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      font-family:"Plus Jakarta Sans", sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      min-height: 100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      overflow:hidden;
+    }
+
+    .blob{
+      position:absolute;
+      width:420px;
+      height:420px;
+      border-radius:999px;
+      filter: blur(18px);
+      opacity:.6;
+      pointer-events:none;
+    }
+    .blob.b1{ background: rgba(19,236,109,.22); top:-180px; left:-140px; }
+    .blob.b2{ background: rgba(6,182,212,.16); bottom:-220px; right:-180px; }
+    .blob.b3{
+      background: rgba(245,158,11,.10);
+      top:40%; right:-220px;
+      width:360px; height:360px;
+    }
+
+    .app{
+      width:100%;
+      max-width:430px;
+      padding: 24px 20px 28px;
+    }
+
+    .panel{
+      background: var(--card);
+      border: 2px solid var(--border);
+      box-shadow: 0 8px 0 -2px var(--shadow);
+      border-radius: var(--r-xl);
+      padding: 28px 20px 22px;
+      text-align:center;
+      position:relative;
+    }
+
+    .logoMark{
+      width:58px;height:58px;
+      margin: 0 auto 14px;
+      border-radius: 18px;
+      background: rgba(19,236,109,.18);
+      border: 2px solid rgba(19,236,109,.14);
+      display:flex; align-items:center; justify-content:center;
+      box-shadow: 0 14px 28px rgba(15,23,42,.10);
+    }
+    .logoMark span{
+      font-size:28px;
+      color: var(--primary);
+    }
+
+    h1{
+      margin: 0;
+      font-size: 34px;
+      font-weight: 900;
+      font-style: italic;
+      letter-spacing: .2px;
+      line-height: 1.05;
+    }
+
+    .sub{
+      margin: 14px auto 0;
+      max-width: 290px;
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+
+    .ctaWrap{
+      margin-top: 20px;
+      display:flex;
+      justify-content:center;
+    }
+
+    a.cta{
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      width: 100%;
+      max-width: 240px;
+      padding: 12px 16px;
+      border-radius: 999px;
+      background: var(--primary);
+      color:#0b1220;
+      font-weight: 900;
+      box-shadow: 0 12px 22px rgba(19,236,109,.22);
+      transition: transform .08s ease;
+      cursor:pointer;
+    }
+    a.cta:active{ transform: translateY(1px); }
+
+    .pillHint{
+      margin: 18px auto 0;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      border: 2px solid rgba(15,23,42,.06);
+      background: rgba(15,23,42,.02);
+      color: rgba(15,23,42,.70);
+      font-size: 10.5px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .pillHint .material-icons-round{ font-size: 16px; color: var(--primary); }
+
+    .fine{
+      margin-top: 14px;
+      font-size: 10px;
+      color: rgba(100,116,139,.95);
+      font-weight: 700;
+      line-height: 1.3;
+    }
+
+    @media (max-width: 430px){
+      .app{ padding-left:16px; padding-right:16px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="blob b1"></div>
+  <div class="blob b2"></div>
+  <div class="blob b3"></div>
+
+  <div class="app">
+    <div class="panel">
+      <div class="logoMark" aria-hidden="true">
+        <span class="material-icons-round">eco</span>
+      </div>
+
+      <h1>ECO QUEST</h1>
+
+      <div class="sub">
+        Small actions. Real progress. Turn everyday eco-friendly actions into repeatable quests!
+      </div>
+
+      <div class="ctaWrap">
+        <!-- Change href to your main UI file (e.g., maincamera.html) -->
+        <a class="cta" href="camera_final.html" aria-label="Start Eco Quest">
+          <span class="material-icons-round" style="font-size:20px;">play_arrow</span>
+          START
+        </a>
+      </div>
+
+      <div class="pillHint">
+        <span class="material-icons-round">emoji_events</span>
+        quests • xp • leagues
+      </div>
+
+      <div class="fine">
+        Tip: Put this file in the same folder as <b>maincamera.html</b> so the START button works.
+      </div>
+    </div>
+  </div>
+</body>
+</html>

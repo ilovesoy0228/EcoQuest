@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="en" class="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Progress</title>
+
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Round">
+<link rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+  <style>
+    :root {
+      --primary: #13ec6d;
+      --bg: #f6f8f7;
+      --card: #ffffff;
+      --border: #e2e8e4;
+      --shadow: #d1d9d4;
+    }
+    body {
+      font-family: "Plus Jakarta Sans", sans-serif;
+      margin: 0 auto;
+      background: var(--bg);
+      min-height: 100dvh;
+    }
+
+    header .row{display:flex;justify-content:space-between;align-items:flex-end}
+      .rank{font-size:11px;font-weight:700;letter-spacing:2px;color:var(--primary)}
+      .title{font-size:28px;font-weight:700;font-style:italic;margin:0}
+      .lvl{
+      font-size:11px;font-weight:700;background:rgba(236,164,19,.2);
+      padding:4px 8px;border-radius:8px;margin-bottom:6px;text-align:right;
+      color:rgb(236,164,19);}
+  
+      
+  .xp-bar{width:90px;height:6px;background:rgba(61,52,23,.1);border-radius:999px;overflow:hidden}
+  .xp-fill{height:100%;width:70%;background:var(--primary)}
+
+  main{padding:16px 20px 32px;}
+
+    .card {
+      background: var(--card);
+      border: 2px solid var(--border);
+      box-shadow: 0 6px 0 -2px var(--shadow);
+      border-radius: 16px;
+    }
+    .xp-segment { height: 10px; border-radius: 999px; background: #e5e7eb; flex: 1; }
+    .xp-segment.active { background: var(--primary); }
+
+
+nav{
+    position:fixed;
+    left:16px; right:16px; bottom:18px;
+    max-width:430px;
+    margin:0 auto;
+    background:var(--card);
+    border:2px solid var(--border);
+    border-radius:999px;
+    padding:10px 12px;
+    box-shadow:0 18px 40px rgba(15,23,42,.12);
+  }
+  nav .bar{
+    display:flex;
+    align-items:center;
+  }
+  nav .bar a{
+    flex:1;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-decoration:none;
+    color:inherit;
+  }
+  nav button{
+    width:44px;height:44px;
+    background:none;border:0;
+    border-radius:999px;
+    display:flex;align-items:center;justify-content:center;
+    color:rgba(15,23,42,.55);
+    cursor:pointer;
+    padding:0;
+  }
+  nav button span{font-size:22px}
+  nav .fab{
+    width:52px;height:52px;border-radius:999px;
+    background:var(--primary);
+    color:#0b1220;
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 10px 20px rgba(19,236,109,.20);
+  }
+
+  /* nav 안에 .bar가 없어도 3개가 가로로 정렬되게 강제 */
+nav{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:8px;
+}
+
+/* nav 바로 아래 a들을 1:1:1로 */
+nav > a{
+  flex:1;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+/* 혹시 button이 있으면 중앙정렬 유지 */
+nav > a > button{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+  a{ text-decoration:none; color:inherit; }
+  
+    
+  </style>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { primary: "#13ec6d" },
+          fontFamily: { display: ["Plus Jakarta Sans"] },
+          borderRadius: { lg: "1rem" }
+        }
+      }
+    }
+  </script>
+</head>
+
+<body class="text-slate-800 pb-32">
+
+  <!-- Header -->
+
+  <main class="px-6 space-y-6 max-w-md mx-auto">
+
+    <!-- Rank -->
+    <section class="card p-6 relative" style="margin-top: 1rem;">
+      <div class="absolute top-4 right-4 bg-primary/20 text-primary p-2 rounded-full">
+        <span class="material-icons-round text-3xl">verified</span>
+      </div>
+
+      <div class="space-y-4">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-widest text-primary">Rank Status</span>
+          <h2 class="text-2xl font-extrabold">Master Scout</h2>
+        </div>
+
+        <div class="flex items-end justify-between">
+          <span class="text-5xl font-black">Lv 14</span>
+          <span class="text-xs font-bold text-slate-400 uppercase">Next: Lv 15</span>
+        </div>
+
+        <div class="flex gap-1.5">
+          <div class="xp-segment active"></div>
+          <div class="xp-segment active"></div>
+          <div class="xp-segment active"></div>
+          <div class="xp-segment active"></div>
+          <div class="xp-segment active"></div>
+          <div class="xp-segment active"></div>
+          <div class="xp-segment"></div>
+          <div class="xp-segment"></div>
+        </div>
+
+        <p class="text-xs font-semibold text-slate-400">850 / 1200 XP earned this season</p>
+      </div>
+    </section>
+
+    <!-- Zone -->
+    <section class="card p-5 border-l-[10px] border-l-primary">
+      <div class="flex items-start justify-between mb-4">
+        <div class="flex items-center gap-3">
+          <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+            <span class="material-icons-round text-primary">forest</span>
+          </div>
+          <div>
+            <h3 class="font-bold">Evergreen Woods</h3>
+            <span class="text-xs font-bold text-slate-400 uppercase">Current Mission Zone</span>
+          </div>
+        </div>
+        <div class="text-right">
+          <span class="text-lg font-extrabold">2,450</span>
+          <p class="text-[10px] font-bold text-slate-400 uppercase">Restoration XP</p>
+        </div>
+      </div>
+
+      <div class="h-5 bg-slate-100 rounded-full overflow-hidden border border-slate-100">
+        <div class="h-full bg-primary w-3/4 flex items-center justify-end px-3">
+          <span class="text-[10px] font-bold text-white uppercase">75% Restored</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats -->
+    <div class="grid grid-cols-2 gap-4">
+      <div class="card p-4 text-center space-y-2">
+        <div class="w-10 h-10 bg-blue-50 text-blue-500 rounded-full flex items-center justify-center mx-auto">
+          <span class="material-icons-round text-xl">assignment</span>
+        </div>
+        <div class="text-2xl font-black">42</div>
+        <div class="text-[10px] font-extrabold text-slate-400 uppercase tracking-widest">Missions</div>
+      </div>
+
+      <div class="card p-4 text-center space-y-2" >
+        <div class="w-10 h-10 bg-yellow-50 text-yellow-500 rounded-full flex items-center justify-center mx-auto">
+          <span class="material-icons-round text-xl">stars</span>
+        </div>
+        <div class="text-2xl font-black">1,250</div>
+        <div class="text-[10px] font-extrabold text-slate-400 uppercase tracking-widest mx-auto">Total XP</div>
+      </div>
+
+      <div class="card p-4 text-center space-y-2">
+        <div class="w-10 h-10 bg-primary/10 text-primary rounded-full flex items-center justify-center mx-auto">
+          <span class="material-icons-round text-xl">delete_sweep</span>
+        </div>
+        <div class="text-2xl font-black">15<span class="text-sm font-bold">kg</span></div>
+        <div class="text-[10px] font-extrabold text-slate-400 uppercase tracking-widest">Cleanups</div>
+      </div>
+
+      <div class="card p-4 text-center space-y-2">
+        <div class="w-10 h-10 bg-emerald-50 text-emerald-500 rounded-full flex items-center justify-center mx-auto">
+          <span class="material-icons-round text-xl">recycling</span>
+        </div>
+        <div class="text-2xl font-black">88</div>
+        <div class="text-[10px] font-extrabold text-slate-400 uppercase tracking-widest">Recycled</div>
+      </div>
+    </div>
+
+    <!-- Streak -->
+    <section class="card p-4 border-orange-200 bg-orange-50 flex items-center justify-between">
+      <div class="flex items-center gap-4">
+        <div class="w-14 h-14 bg-orange-500 text-white rounded-full flex items-center justify-center shadow-lg shadow-orange-200">
+          <span class="material-icons-round text-3xl">local_fire_department</span>
+        </div>
+        <div>
+          <h4 class="font-extrabold text-orange-900 text-lg">7 Day Blaze</h4>
+          <p class="text-xs font-bold text-orange-700/70 uppercase">Quest Perk Active</p>
+        </div>
+      </div>
+      <div class="text-xs font-black text-orange-600 uppercase italic">2x XP</div>
+    </section>
+
+    <!-- Achievements -->
+    <section class="space-y-4">
+      <h3 class="text-sm font-black text-slate-400 uppercase tracking-[0.2em] px-1">Achievement Medals</h3>
+      <div class="grid grid-cols-4 gap-4">
+        <div class="flex flex-col items-center gap-2">
+          <div class="w-16 h-16 rounded-full bg-slate-100 border-4 border-white shadow-sm flex items-center justify-center grayscale opacity-60">
+            <span class="material-icons-round text-2xl text-slate-400">landscape</span>
+          </div>
+          <span class="text-[9px] font-bold text-slate-400 uppercase text-center">Summit</span>
+        </div>
+        <div class="flex flex-col items-center gap-2">
+          <div class="w-16 h-16 rounded-full bg-primary/20 border-4 border-white shadow-sm flex items-center justify-center ring-2 ring-primary/20">
+            <span class="material-icons-round text-2xl text-primary">eco</span>
+          </div>
+          <span class="text-[9px] font-bold text-slate-700 uppercase text-center">Protector</span>
+        </div>
+        <div class="flex flex-col items-center gap-2">
+          <div class="w-16 h-16 rounded-full bg-blue-50 border-4 border-white shadow-sm flex items-center justify-center ring-2 ring-blue-100">
+            <span class="material-icons-round text-2xl text-blue-400">water_drop</span>
+          </div>
+          <span class="text-[9px] font-bold text-slate-700 uppercase text-center">Aqua Guard</span>
+        </div>
+        <div class="flex flex-col items-center gap-2">
+          <div class="w-16 h-16 rounded-full bg-yellow-50 border-4 border-white shadow-sm flex items-center justify-center ring-2 ring-yellow-100">
+            <span class="material-icons-round text-2xl text-yellow-600">military_tech</span>
+          </div>
+          <span class="text-[9px] font-bold text-slate-700 uppercase text-center">Elite</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Activity -->
+    <section class="card p-6 space-y-4">
+      <h3 class="text-sm font-black text-slate-400 uppercase tracking-[0.2em]">Activity Breakdown</h3>
+
+      <div>
+        <div class="flex justify-between text-[11px] font-bold uppercase">
+          <span class="text-emerald-600">Cleanup Master</span>
+          <span class="text-slate-400">Lv 8</span>
+        </div>
+        <div class="h-2 w-full bg-slate-100 rounded-full overflow-hidden">
+          <div class="h-full bg-emerald-400 w-4/5"></div>
+        </div>
+      </div>
+
+      <div>
+        <div class="flex justify-between text-[11px] font-bold uppercase">
+          <span class="text-blue-600">Recycling Hero</span>
+          <span class="text-slate-400">Lv 5</span>
+        </div>
+        <div class="h-2 w-full bg-slate-100 rounded-full overflow-hidden">
+          <div class="h-full bg-blue-400 w-1/2"></div>
+        </div>
+      </div>
+
+      <div>
+        <div class="flex justify-between text-[11px] font-bold uppercase">
+          <span class="text-orange-600">Reuse Specialist</span>
+          <span class="text-slate-400">Lv 3</span>
+        </div>
+        <div class="h-2 w-full bg-slate-100 rounded-full overflow-hidden">
+          <div class="h-full bg-orange-400 w-1/4"></div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Bottom Nav -->
+ <nav>
+         <a href="progress.html" aria-label="Progress">
+        <button aria-label="Camera"><div class="fab"><span class="material-symbols-outlined">analytics</span></div></button>
+      </a>
+
+     
+      <a href="camera_final.html" aria-label="Camera">
+        <button aria-label="Camera"><span class="material-icons-round" style="font-size:28px;">photo_camera</span></button>
+      </a>
+
+      <a href="leaderboard_nav3.html" aria-label="Leaderboard">
+        <button aria-label="Leaderboard"><span class="material-icons-round">emoji_events</span></button>
+      </a>
+     
+
+</body>
+</html>
